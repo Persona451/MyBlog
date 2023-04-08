@@ -1,0 +1,14 @@
+.footer {
+    height: 50vh;
+    background-color: #BF94E8;
+}
+.footer_text {
+    font-weight: 700;
+    font-size: 58px;
+    padding: 80px 70px;
+}
+.logo {
+    display: flex;
+    margin-left: 100px;
+    gap: 50px;
+}

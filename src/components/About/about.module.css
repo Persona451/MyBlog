@@ -1,0 +1,14 @@
+.info {
+    height: 90vh;
+}
+.about {
+    padding: 180px 50px;
+    text-align: center;
+    font-size: 64px;
+}
+.more {
+    font-size: 48px;
+    float: right;
+    padding: 0px 140px 70px 0px;
+    color: black;
+}

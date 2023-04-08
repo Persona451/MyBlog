@@ -1,0 +1,31 @@
+.subscribe_info {
+    height: 65vh;
+    background-color: aqua;
+}
+.subscribe_text {
+    text-align: center;
+    font-size: 36px;
+    padding: 110px 230px;
+}
+.subscribe_email {
+    font-size: 24px;
+    margin: 70px 0px 0px 320px;
+    text-align: center;
+    background-color: #c4c4c4;
+    padding: 15px 15px;
+    width: 540px;
+}
+
+.info {
+    display: flex;
+}
+
+.subscribe {
+    margin: 70px 0px 0px 0px;
+    font-size: 24px;
+    background-color: black;
+    color: white;
+    width: 270px;
+    text-align: center;
+    padding: 15px 0;
+}
