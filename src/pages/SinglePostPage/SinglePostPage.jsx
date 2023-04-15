@@ -1,23 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./singlepostpage.module.css"
-import postImg from "./postimg.png"
+import { useParams } from "react-router-dom";
+import postService from "../../services/posts"
 
-const SinglePostPage = () => {
+const SinglePostPage = (props) => {
+    const [post, setPost] = useState([])
+    const { id } = useParams()
+    useEffect(() => {
+        postService.getPost(id).then((res) => setPost(res.data))
+    }, [])
+    const dateString = post.createdAt;
+    const date = new Date(dateString);
+    const options = { day: 'numeric', month: 'short', year: 'numeric' };
+    const formattedDate = date.toLocaleDateString('en-US', options);
     return (
         <article className={styles.post}>
-            <h1 className={styles.title}>My title</h1>
-            <img src={postImg} alt="" className={styles.img} />
-            <p className={styles.descr}>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci,
-                nesciunt eaque ullam illo voluptates ratione voluptate! Cupiditate
-                exercitationem harum quibusdam possimus odio id perferendis laborum
-                nulla voluptatem, tempore repellat ea placeat. Excepturi rerum nam ab
-                vel quidem omnis sapiente soluta animi enim accusantium saepe quasi
-                voluptatum labore facilis inventore fuga laboriosam incidunt, blanditiis
-                expedita itaque molestiae id, ea tempore? Nobis architecto eius nam
-                maiores voluptates minima non laborum veritatis dolores!
-            </p>
-            <p className={styles.date}>Published 11 April 2021</p>
+            <h1 className={styles.title}>{post.title}</h1>
+            <img src={post.img} alt="" className={styles.img} />
+            <p className={styles.descr}>{post.descr}</p>
+            <p className={styles.date}>{formattedDate}</p>
         </article>
     );
 };

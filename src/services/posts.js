@@ -7,6 +7,12 @@ const getPosts = () => {
     return axios.get(postsURL)
 }
 
+// получить один пост
+const getPost = (id) => {
+    return axios.get(`${postsURL}/${id}`)
+}
+
 export default {
-    get: getPosts
+    get: getPosts,
+    getPost: getPost
 }

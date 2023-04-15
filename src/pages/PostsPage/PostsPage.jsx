@@ -15,14 +15,15 @@ const PostsPage = () => {
                 const dateString = post.createdAt;
                 const date = new Date(dateString);
                 const options = { day: 'numeric', month: 'short', year: 'numeric' };
-                const formatDate = date.toLocaleDateString('en-US', options);
+                const formattedDate = date.toLocaleDateString('en-US', options);
                 return (
                     <Post
                         key={post._id}
                         img={post.img}
-                        date={formatDate}
+                        date={formattedDate}
                         title={post.title}
                         descr={post.descr}
+                        id={post._id}
                     />
                 );
             })}
