@@ -4,6 +4,7 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import HomePage from './pages/HomePage/HomePage'
 import PostsPage from './pages/PostsPage/PostsPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
 import SinglePostPage from './pages/SinglePostPage/SinglePostPage';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Route path='/' element={<HomePage/>}/>
       <Route path='/posts' element={<PostsPage/>}/>
       <Route path='/post/:id' element={<SinglePostPage/>}/>
+      <Route path='/register' element={<RegisterPage/>} />
     </Routes>
     <Footer/>
     </>

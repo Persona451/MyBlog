@@ -1,15 +1,14 @@
 // создаем функцию которая возвращает промис запроса axios
 import axios from "axios"
-
-const postsURL = "https://gentle-ridge-36337.herokuapp.com/api/posts"
+import { rootApi } from "../api"
 
 const getPosts = () => {
-    return axios.get(postsURL)
+    return axios.get(rootApi + '/posts')
 }
 
 // получить один пост
 const getPost = (id) => {
-    return axios.get(`${postsURL}/${id}`)
+    return axios.get(`${rootApi}/posts/${id}`)
 }
 
 export default {
