@@ -9,7 +9,7 @@ export const authServices = () => {
         registration,
     }
 }
-export const authService = () => {
+export const authServiceLogin = () => {
     const login = (loginData) => {
         return axios.post(`${rootApi}/auth/login`, loginData)
     }

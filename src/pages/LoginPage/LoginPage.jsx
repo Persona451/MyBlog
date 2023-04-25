@@ -6,9 +6,15 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { authService } from '../../services/auth';
+import { authServiceLogin } from '../../services/auth';
+import { useDispatch } from 'react-redux';
+import { loginSuccess } from '../../redux/userSlice';
 
 const LoginPage = () => {
+
+    const [username, setUsername] = useState('')
+    const dispatch = useDispatch() //useDispatch() позволяет вызвать action
+
     const validationSchema = yup.object().shape({
         email: yup
             .string()
@@ -19,26 +25,28 @@ const LoginPage = () => {
 
     const formik = useFormik({
         initialValues: {
-          email: "",
-          password: "",
+            email: "",
+            password: "",
         },
         validationSchema,
         onSubmit: async (values) => {
-          try {
-            const { data } = await login(values);
-            console.log(data);
-            toast("Вы успешно авторизовались");
-          } catch (err) {
-            console.log(err);;
-            toast(err.response.data);
-          }
+            try {
+                const { data } = await login(values);
+                dispatch(loginSuccess(data))
+                console.log(data);
+                setUsername(data.username)
+                toast("Вы успешно авторизовались");
+            } catch (err) {
+                console.log(err);
+                toast(err.response.data);
+            }
         },
-      });
-      const { login } = authService();
+    });
+    const { login } = authServiceLogin();
 
     return (
         <section className={styles.wrapper}>
-            <h1 className={styles.title}>Логин</h1>
+            <h1 className={styles.title}>Логин {username}</h1>
             <form className={styles.form} onSubmit={formik.handleSubmit}>
                 <TextField
                     error={formik.errors.email}
@@ -75,6 +83,7 @@ const LoginPage = () => {
                     Логин
                 </Button>
             </form>
+
             <ToastContainer
                 position="top-right"
                 autoClose={5000}
