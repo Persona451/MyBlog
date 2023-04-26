@@ -10,11 +10,11 @@ const Header = () => {
         return isActive ? `${styles.active} ${styles.link}` : styles.link
     }
     const username = useSelector(state => state.user.currentUser?.username)
-    
+
     const dispatch = useDispatch();
     const handleLogout = () => {
         dispatch(logout());
-    };
+      };
     return (
         <header>
             <nav className={styles.nav}>
@@ -24,9 +24,11 @@ const Header = () => {
                 <NavLink to="/register" className={activeClass}>Register</NavLink>
                 <NavLink to="/login" className={activeClass}>Login</NavLink>
                 <NavLink to="/profile" className={activeClass}>Profile</NavLink>
-                <NavLink to="/logout" className={activeClass} onClick={handleLogout}>LogOut</NavLink>
             </nav>
             <p className={styles.username}>{username}</p>
+            <button className={styles.button} onClick={handleLogout}>
+                Выйти
+            </button>
         </header>
     );
 };

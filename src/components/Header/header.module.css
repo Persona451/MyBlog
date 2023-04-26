@@ -1,6 +1,9 @@
 header {
     background-color: #BF94E8;
+    display: flex;
+    align-items: center;
 }
+
 .nav {
     width: 90%;
     margin: auto;
@@ -9,11 +12,20 @@ header {
     align-items: center;
     gap: 15px;
 }
+
 .link {
     font-size: 24px;
     color: black;
     text-decoration: none;
 }
+
 .active {
     border-bottom: 1px solid black;
+}
+
+.button {
+    width: 100px;
+    font-size: 24px;
+    margin: auto 20px;
+    border-radius: 10px;
 }
