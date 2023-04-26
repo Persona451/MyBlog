@@ -10,6 +10,7 @@ const Header = () => {
         return isActive ? `${styles.active} ${styles.link}` : styles.link
     }
     const username = useSelector(state => state.user.currentUser?.username)
+    
     const dispatch = useDispatch();
     const handleLogout = () => {
         dispatch(logout());

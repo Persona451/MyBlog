@@ -9,11 +9,13 @@ import * as yup from "yup";
 import { authServiceLogin } from '../../services/auth';
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../../redux/userSlice';
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
 
     const [username, setUsername] = useState('')
     const dispatch = useDispatch() //useDispatch() позволяет вызвать action
+    const navigate = useNavigate()
 
     const validationSchema = yup.object().shape({
         email: yup
@@ -35,6 +37,7 @@ const LoginPage = () => {
                 dispatch(loginSuccess(data))
                 console.log(data);
                 setUsername(data.username)
+                navigate("/profile")
                 toast("Вы успешно авторизовались");
             } catch (err) {
                 console.log(err);
